@@ -19,31 +19,36 @@ public class Prompt {
 
   public static String getString(String prompt) {
     System.out.print(prompt);
-    String s = scanner.nextLine(); // read user entry
-    return s;
+    return scanner.nextLine();
   }
 
   public static int getInt(String prompt) {
     int i = 0;
     boolean isValid = false;
+
     while (!isValid) {
       System.out.print(prompt);
+
       if (scanner.hasNextInt()) {
         i = scanner.nextInt();
         isValid = true;
       } else {
         System.out.println("Error! Invalid integer value. Try again.");
       }
-      scanner.nextLine(); // discard any other data entered on the line
+
+      scanner.nextLine();
     }
+
     return i;
   }
 
   public static int getInt(String prompt, int min, int max) {
     int i = 0;
     boolean isValid = false;
+
     while (!isValid) {
       i = getInt(prompt);
+
       if (i <= min)
         System.out.println("Error! Number must be greater than " + min + ".");
       else if (i >= max)
@@ -51,22 +56,27 @@ public class Prompt {
       else
         isValid = true;
     }
+
     return i;
   }
 
   public static double getDouble(String prompt) {
     double d = 0;
     boolean isValid = false;
+
     while (!isValid) {
       System.out.print(prompt);
+
       if (scanner.hasNextDouble()) {
         d = scanner.nextDouble();
         isValid = true;
       } else {
         System.out.println("Error! Invalid decimal value. Try again.");
       }
-      scanner.nextLine(); // discard any other data entered on the line
+
+      scanner.nextLine();
     }
+
     return d;
   }
 }
