@@ -2,11 +2,46 @@ package utils;
 
 import java.util.Scanner;
 
+/**
+ * A utility class for prompting the user for input.
+ * 
+ * @author Victor Garcia Fernandez
+ *
+ */
 public class Prompt {
   // The prompt to display to the user when asking for input.
   public static final String PROMPT = "> ";
 
   private static Scanner scanner = new Scanner(System.in);
+
+  /**
+   * Gets a value from the user. The message is printed, and the user's input is
+   * returned. The type parameter determines the type of the value returned.
+   * 
+   * @param message
+   * @param type
+   * @return T
+   */
+  public static <T> T get(String message, Class<T> type) {
+    if (type == String.class) {
+      return type.cast(getString(message));
+
+    } else if (type == Integer.class) {
+      return type.cast(getInt(message));
+
+    } else if (type == Float.class) {
+      return type.cast(getFloat(message));
+
+    } else if (type == Double.class) {
+      return type.cast(getDouble(message));
+
+    } else if (type == Boolean.class) {
+      return type.cast(getBoolean(message));
+
+    } else {
+      throw new IllegalArgumentException("Invalid type: " + type);
+    }
+  }
 
   /**
    * Gets a string from the user. The message is printed, and the user's input is

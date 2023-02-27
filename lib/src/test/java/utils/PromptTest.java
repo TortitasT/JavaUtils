@@ -27,6 +27,22 @@ public class PromptTest {
   // END MOCK SCANNER
 
   @Test
+  public void testGet() {
+    String message = "Get test";
+
+    setInputStream(message);
+
+    String response = Prompt.get(message, String.class);
+
+    assertTrue("The message should be printed",
+        outContent.toString().contains(message));
+
+    assertTrue("The prompt should be printed", outContent.toString().contains(Prompt.PROMPT));
+
+    assertTrue("The response should equal the message", response.equals(message));
+  }
+
+  @Test
   public void testGetBoolean() {
     setInputStream("y");
 
