@@ -122,6 +122,27 @@ public class PromptTest {
     assertTrue("The response should equal the message", response.equals(message));
   }
 
+  enum TestEnum {
+    TEST, TEST2
+  }
+
+  @Test
+  public void testGetEnum() {
+    String message = "Get enum test";
+
+    setInputStream("TEST");
+
+    TestEnum response = Prompt.getEnum(message, TestEnum.class);
+
+    assertTrue("Response should be TEST", response == TestEnum.TEST);
+
+    setInputStream("TEST2");
+
+    response = Prompt.getEnum(message, TestEnum.class);
+
+    assertTrue("Response should be TEST2", response == TestEnum.TEST2);
+  }
+
   private void setInputStream(String input) {
     ByteArrayInputStream in = new ByteArrayInputStream(input.getBytes());
     System.setIn(in);

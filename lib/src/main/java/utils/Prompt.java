@@ -132,6 +132,26 @@ public class Prompt {
     }
   }
 
+  public static <T> T getEnum(String message, Class<T> type) {
+    while (true) {
+      try {
+        String[] values = new String[type.getEnumConstants().length];
+        for (int i = 0; i < values.length; i++) {
+          values[i] = type.getEnumConstants()[i].toString();
+        }
+
+        System.out.println("");
+        System.out.println("Posible values:");
+        System.out.println(String.join(", ", values));
+
+        return type.cast(Enum.valueOf((Class<Enum>) type, getString(message).toUpperCase()));
+
+      } catch (IllegalArgumentException e) {
+        System.out.println("Error! Invalid value. Try again.");
+      }
+    }
+  }
+
   private static String getLine() {
     scanner = new Scanner(System.in);
     return scanner.nextLine();
