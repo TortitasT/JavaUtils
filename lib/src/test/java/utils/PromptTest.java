@@ -134,6 +134,8 @@ public class PromptTest {
 
     TestEnum response = Prompt.getEnum(message, TestEnum.class);
 
+    System.out.println(response);
+
     assertTrue("Response should be TEST", response == TestEnum.TEST);
 
     setInputStream("TEST2");

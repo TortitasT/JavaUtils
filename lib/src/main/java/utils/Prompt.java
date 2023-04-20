@@ -144,7 +144,19 @@ public class Prompt {
         System.out.println("Posible values:");
         System.out.println(String.join(", ", values));
 
-        return type.cast(Enum.valueOf((Class<Enum>) type, getString(message).toUpperCase()));
+        // Stopped working once I tried it on FreeBSD with OpenJDK 17
+        // return type.cast(Enum.valueOf((Class<Enum>) type, getString(message).toUpperCase()));
+
+        // Quick and dirty fix
+        String input = getString(message).toUpperCase();
+        T[] constants = type.getEnumConstants();
+        for (int i = 0; i < constants.length; i++) {
+          if (constants[i].toString().equals(input)) {
+            return type.cast(constants[i]);
+          }
+        }
+
+        return null;
 
       } catch (IllegalArgumentException e) {
         System.out.println("Error! Invalid value. Try again.");
