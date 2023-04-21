@@ -6,7 +6,7 @@ Java utils library
 - Gradle
 ```bash
 dependencies {
-    implementation 'eu.tortitas.utils:lib:1.3.0'
+    implementation 'eu.tortitas.utils:lib:1.3.1'
 }
 ```
 
@@ -15,7 +15,7 @@ dependencies {
 <dependency>
     <groupId>eu.tortitas.utils</groupId>
     <artifactId>lib</artifactId>
-    <version>1.3.0</version>
+    <version>1.3.1</version>
 </dependency>
 ```
 

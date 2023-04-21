@@ -4,7 +4,7 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-interface Database {
+public interface Database {
   ResultSet query(String query) throws SQLException;
 
   void update(String query) throws SQLException;

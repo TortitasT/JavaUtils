@@ -6,7 +6,10 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-class DatabaseSQLite implements Database {
+/*
+ * This class is used to connect to a SQLite database.
+ */
+public class DatabaseSQLite implements Database {
   private Connection connection;
 
   public DatabaseSQLite(String path) {
